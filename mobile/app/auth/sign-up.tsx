@@ -1,6 +1,6 @@
 import { FontAwesome } from "@expo/vector-icons";
 import React, { useRef, useState } from "react";
-import { View, Text, TextInput, Pressable, Keyboard, TouchableWithoutFeedback, KeyboardAvoidingView, Platform } from "react-native";
+import { View, Text, TextInput, Pressable, Keyboard, TouchableWithoutFeedback, KeyboardAvoidingView, Platform, ScrollView } from "react-native";
 
 export default function SignUpPage() {
   const [password, setPassword] = useState("");
@@ -24,11 +24,17 @@ export default function SignUpPage() {
     <KeyboardAvoidingView className="flex-1"
     behavior={Platform.OS === "ios" ? "padding" : "height"}>
       <TouchableWithoutFeedback onPress={dismissKeyboard} accessible={false}>
+            <ScrollView
+      className="flex-1"
+      contentContainerStyle={{ flexGrow: 1 }}
+      keyboardShouldPersistTaps="handled"
+    >
     <View className="flex-1 py-8 px-16 w-full h-full items-center justify-center">
       {/* Header Title */}
       <View className="items-center mb-6">
       <Text className="text-4xl font-bold no-clip-text text-textColor">Create Account</Text>
       </View>
+      
       {/* Email Text Box */}
       <View className="flex-row bg-textBoxColor rounded-full w-3/4 mb-4 py-2 px-8 shadow-sm justify-center items-center">
       <FontAwesome name="user" color="#cc5e43" size={15} className="mr-3"/>
@@ -92,6 +98,7 @@ export default function SignUpPage() {
 
       {/* Facebook Button */}
     </View>
+    </ScrollView>
     </TouchableWithoutFeedback>
     </KeyboardAvoidingView>
   );

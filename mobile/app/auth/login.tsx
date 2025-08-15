@@ -4,8 +4,12 @@ import {
   TextInput,
   Pressable,
   TouchableOpacity,
+  KeyboardAvoidingView,
+  TouchableWithoutFeedback,
+  Keyboard,
+  Platform
 } from "react-native";
-import React, { useState } from "react";
+import React, { useState, useRef} from "react";
 import { FontAwesome } from "@expo/vector-icons";
 
 export default function LoginPage() {
@@ -16,8 +20,16 @@ export default function LoginPage() {
 
   const [isEmailFocused, setIsEmailFocused] = useState(false);
   const [isPasswordFocused, setIsPasswordFocused] = useState(false);
+  const [focusField, setFocusField] = useState(null);
+
+  const dismissKeyboard = () => {
+    Keyboard.dismiss();
+    setFocusField(null);
+  }
 
   return (
+    <KeyboardAvoidingView className="flex-1" behavior={Platform.OS === "ios" ? "padding" : "height"}>
+      <TouchableWithoutFeedback onPress={dismissKeyboard} accessible={false}>
     <View className="flex-1 w-full h-full py-8 px-16 justify-center items-center">
       {/* Header Text */}
       <View className=" items-center mb-6 ">
@@ -115,5 +127,7 @@ export default function LoginPage() {
         </TouchableOpacity>
       </View>
     </View>
+    </TouchableWithoutFeedback>
+    </KeyboardAvoidingView>
   );
 }
