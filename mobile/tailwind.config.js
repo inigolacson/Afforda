@@ -9,7 +9,14 @@ module.exports = {
   presets: [require("nativewind/preset")],
   theme: {
     extend: {
-      colors: {},
+      colors: {
+        primaryColor: "#f2ffff",
+        secondaryColor: "#3d5a80",
+        textBoxColor: "#b0c8d6",
+        textColor: "#293241",
+        highlightColor: "#ee6c4d",
+        facebookBlue: "#1877F2",
+      },
       fontFamily: {},
     },
   },

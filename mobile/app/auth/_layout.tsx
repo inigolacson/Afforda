@@ -4,14 +4,14 @@ import { StatusBar } from "expo-status-bar";
 
 export default function AuthLayout() {
   return (
-    <View className="flex-1 bg-[#FFFFFF]">
+    <View className="flex-1 bg-[#f2ffff]">
       <StatusBar style="auto" />
       <Stack
         screenOptions={{
           headerShown: false,
           animation: "slide_from_right",
           contentStyle: {
-            backgroundColor: "#FFFFFF",
+            backgroundColor: "#f2ffff",
           },
         }}
       />
