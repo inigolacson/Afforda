@@ -1,6 +1,6 @@
 import { FontAwesome } from "@expo/vector-icons";
 import React, { useRef, useState } from "react";
-import { View, Text, TextInput, Pressable, Keyboard, TouchableWithoutFeedback, KeyboardAvoidingView, Platform, ScrollView } from "react-native";
+import { View, Text, TextInput, Pressable, Keyboard, TouchableWithoutFeedback, KeyboardAvoidingView, Platform, ScrollView, TouchableOpacity } from "react-native";
 
 export default function SignUpPage() {
   const [password, setPassword] = useState("");
@@ -71,7 +71,7 @@ export default function SignUpPage() {
       </View>
 
       {/* Confirm Password Text Box */}
-      <View className="flex-row bg-textBoxColor rounded-full py-2 px-8 w-3/4 mb-4 justify-center items-center">
+      <View className="flex-row bg-textBoxColor rounded-full py-2 px-8 w-3/4 mb-8 justify-center items-center">
         <FontAwesome name="lock" size={15} color="#cc5e43" className="mr-3"/>
         <TextInput
         value={confirmPassword}
@@ -91,12 +91,38 @@ export default function SignUpPage() {
       </View>
 
       {/* Sign up Button */}
+      <View className="w-full items-center">
+        <TouchableOpacity className="w-3/4 px-2 py-4 bg-secondaryColor rounded-full items-center">
+          <Text className="font-bold text-xl text-primaryColor">Sign up!</Text>
+        </TouchableOpacity>
+      </View>
 
       {/* Divider */}
+      <View className="flex-row items-center my-6 w-3/4">
+        <View className="flex-1 h-px bg-secondaryColor"/>
+        <Text className="mx-3 text-secondaryColor text-sm">Or continue with</Text>
+        <View className="flex-1 h-px bg-secondaryColor"/>
+      </View>
 
       {/* Google Button */}
+    <View className="w-full items-center mb-4">
+      <TouchableOpacity className="w-3/4 bg-slate-200 py-4 px-8 items-center rounded-full">
+      <View className="items-center flex-row">
+        <FontAwesome name="google" size={15} color="#293241" className="mr-3"/>
+        <Text className="font-medium text-textColor">Sign up with Google</Text>
+        </View>
+      </TouchableOpacity>
+    </View>
 
       {/* Facebook Button */}
+      <View className="w-full items-center mb-4">
+        <TouchableOpacity className="w-3/4 bg-facebookBlue py-4 px-8 items-center rounded-full">
+          <View className="items-center flex-row">
+            <FontAwesome name="facebook" size={15} color="#f2ffff" className="mr-2"/>
+            <Text className="font-medium text-primaryColor">Sign up with Facebook</Text>
+          </View>
+        </TouchableOpacity>
+      </View>
     </View>
     </ScrollView>
     </TouchableWithoutFeedback>
