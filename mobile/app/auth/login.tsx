@@ -126,7 +126,8 @@ export default function LoginPage() {
 
       {/* Facebook Button */}
       <View className="w-full items-center">
-        <TouchableOpacity className="w-3/4 px-2 py-4 items-center rounded-full bg-facebookBlue">
+        <TouchableOpacity className="w-3/4 px-2 py-4 items-center rounded-full bg-facebookBlue"
+        onPress={() => handleOAuth("facebook", pathname)}>
           <View className="flex-row items-center">
             <FontAwesome
               name="facebook"
