@@ -11,6 +11,9 @@ import {
 } from "react-native";
 import React, { useState, useRef} from "react";
 import { FontAwesome } from "@expo/vector-icons";
+import { handleOAuth } from "@/lib/utils";
+import { authClient } from "@/lib/auth-client";
+import { usePathname } from "expo-router";
 
 export default function LoginPage() {
   const [password, setPassword] = useState("");
@@ -22,9 +25,19 @@ export default function LoginPage() {
   const [isPasswordFocused, setIsPasswordFocused] = useState(false);
   const [focusField, setFocusField] = useState(null);
 
+  const pathname = usePathname();
+
   const dismissKeyboard = () => {
     Keyboard.dismiss();
     setFocusField(null);
+  }
+
+  const handleLogin = async () => {
+    await authClient.signIn.email({
+      email,
+      password,
+      callbackURL: pathname,
+    })
   }
 
   return (
@@ -77,7 +90,8 @@ export default function LoginPage() {
 
       {/* Sign In Button */}
       <View className="w-full items-center">
-        <TouchableOpacity className="w-3/4 px-2 py-4 bg-secondaryColor items-center rounded-full ">
+        <TouchableOpacity className="w-3/4 px-2 py-4 bg-secondaryColor items-center rounded-full"
+        onPress={handleLogin}>
           <Text className="text-primaryColor text-xl font-semibold tracking-wider">
             Login
           </Text>
@@ -112,7 +126,8 @@ export default function LoginPage() {
 
       {/* Facebook Button */}
       <View className="w-full items-center">
-        <TouchableOpacity className="w-3/4 px-2 py-4 items-center rounded-full bg-facebookBlue">
+        <TouchableOpacity className="w-3/4 px-2 py-4 items-center rounded-full bg-facebookBlue"
+        onPress={() => handleOAuth("facebook", pathname)}>
           <View className="flex-row items-center">
             <FontAwesome
               name="facebook"
