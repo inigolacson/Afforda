@@ -18,10 +18,9 @@ export const auth = betterAuth({
     enabled: true,
   },
   trustedOrigins: [
-    "http://localhost:3000", // Web dev
-    "exp://172.20.10.2:8081", // Expo dev client (LAN IP)
-    "afforda://",
-    "exp://192.168.100.173:8081", // Your app scheme for deep links
+    "https://afforda-zeta.vercel.app", // Web frontend
+    "afforda://", // Mobile app deep link for Expo/React Native
   ],
+
   plugins: [openAPI()],
 });
