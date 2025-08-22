@@ -2,6 +2,8 @@ import { betterAuth } from "better-auth";
 import { prismaAdapter } from "better-auth/adapters/prisma";
 import { openAPI } from "better-auth/plugins";
 import { PrismaClient } from "@prisma/client";
+import { NextRequest } from "next/server";
+import { error } from "console";
 
 const prisma = new PrismaClient();
 export const auth = betterAuth({
@@ -12,6 +14,7 @@ export const auth = betterAuth({
     facebook: {
       clientId: process.env.FACEBOOK_CLIENT_ID as string,
       clientSecret: process.env.FACEBOOK_CLIENT_SECRET as string,
+      redirectURI: "https://transakto.vercel.app/api/auth/callback/facebook",
     },
   },
   emailAndPassword: {
@@ -26,3 +29,12 @@ export const auth = betterAuth({
 
   plugins: [openAPI()],
 });
+
+export async function getUserId(req: NextRequest): Promise<String> {
+  const sessionData = await auth.api.getSession(req);
+
+  if (!sessionData?.session.userId) {
+    throw new Error("Unauthorized");
+  }
+  return sessionData.session.userId;
+}
