@@ -1,1 +1,4 @@
-export type DeductionsPayload = {};
+export type DeductionsPayload = {
+  name: string;
+  amount: number;
+};

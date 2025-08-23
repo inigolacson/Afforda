@@ -30,7 +30,7 @@ export const auth = betterAuth({
   plugins: [openAPI()],
 });
 
-export async function getUserId(req: NextRequest): Promise<String> {
+export async function getUserId(req: NextRequest): Promise<string> {
   const sessionData = await auth.api.getSession(req);
 
   if (!sessionData?.session.userId) {

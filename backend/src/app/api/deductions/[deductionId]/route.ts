@@ -1,9 +1,29 @@
-import { NextRequest } from "next/server";
 import { deductionsController } from "@controllers/deductionsController";
+import { NextRequest } from "next/server";
 
-//create deductions
-export async function POST(req: NextRequest) {
-  return;
+//get specific deduction by id
+export async function GET(
+  req: NextRequest,
+  context: { params: Promise<{ deductionId: string }> }
+) {
+  const { deductionId } = await context.params;
+  return deductionsController.getDeduction(req, deductionId);
 }
 
-//get deduction
+//edit specific deduction by id
+export async function PATCH(
+  req: NextRequest,
+  context: { params: Promise<{ deductionId: string }> }
+) {
+  const { deductionId } = await context.params;
+  return deductionsController.updateDeduction(req, deductionId);
+}
+
+//delete specific deducton by id
+export async function DELETE(
+  req: NextRequest,
+  context: { params: Promise<{ deductionId: string }> }
+) {
+  const { deductionId } = await context.params;
+  return deductionsController.deleteDeduction(req, deductionId);
+}
