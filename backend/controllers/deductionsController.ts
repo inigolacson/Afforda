@@ -37,6 +37,7 @@ export const deductionsController = {
 
       return NextResponse.json(deductions, { status: 200 });
     } catch (error) {
+      console.error("Retrieving of Deductions failed:", error);
       return NextResponse.json(
         { error: "Internal Server Error" },
         { status: 400 }
@@ -54,6 +55,7 @@ export const deductionsController = {
 
       return NextResponse.json(deduction, { status: 200 });
     } catch (error) {
+      console.error("Retrieving of Deduction failed:", error);
       return NextResponse.json(
         { error: "Internal Server Error" },
         { status: 500 }
@@ -79,6 +81,7 @@ export const deductionsController = {
 
       return NextResponse.json(editDeduction, { status: 200 });
     } catch (error) {
+      console.error("Updating of Deduction failed:", error);
       return NextResponse.json(
         { error: "Internal Server Error" },
         { status: 500 }
@@ -97,6 +100,7 @@ export const deductionsController = {
 
       return NextResponse.json(trashDeduction, { status: 200 });
     } catch (error) {
+      console.error("Deleting of Deduction failed:", error);
       return NextResponse.json(
         { error: "Internal Server Error" },
         { status: 500 }
