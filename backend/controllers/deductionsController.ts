@@ -67,9 +67,9 @@ export const deductionsController = {
     try {
       const userId = await getUserId(req);
       const body = await req.json();
-      if (!body.name) {
+      if (!body.name && typeof body.amount !== "number") {
         return NextResponse.json(
-          { error: "Missing required fields: name" },
+          { error: "Nothing to update" },
           { status: 400 }
         );
       }
@@ -78,6 +78,13 @@ export const deductionsController = {
         deductionId,
         userId
       );
+
+      if (!editDeduction) {
+        return NextResponse.json(
+          { error: "Deduction not found" },
+          { status: 404 }
+        );
+      }
 
       return NextResponse.json(editDeduction, { status: 200 });
     } catch (error) {

@@ -1,0 +1,23 @@
+meta {
+  name: Sign In Email
+  type: http
+  seq: 2
+}
+
+post {
+  url: {{baseUrl}}/auth/sign-in/email
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "email": "test2@gmail.com",
+    "password": "33f332052c704797AbS",
+    "callbackURL": ""
+  }
+}
+
+settings {
+  encodeUrl: true
+}

@@ -1,0 +1,15 @@
+meta {
+  name: Get Deductions
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{baseUrl}}/deductions
+  body: none
+  auth: inherit
+}
+
+settings {
+  encodeUrl: true
+}
