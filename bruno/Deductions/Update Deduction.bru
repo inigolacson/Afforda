@@ -1,0 +1,22 @@
+meta {
+  name: Update Deduction
+  type: http
+  seq: 5
+}
+
+patch {
+  url: {{baseUrl}}/deductions/cd78103b-20f8-45e4-8a16-12862629e355
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "name": "gym membership",
+    "amount": 5000
+  }
+}
+
+settings {
+  encodeUrl: true
+}
