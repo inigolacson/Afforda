@@ -8,7 +8,7 @@ import { error } from "console";
 const prisma = new PrismaClient();
 export const auth = betterAuth({
   database: prismaAdapter(prisma, {
-    provider: "sqlite", // or "mysql", "postgresql", ...etc
+    provider: "postgresql", // or "mysql", "postgresql", ...etc
   }),
   socialProviders: {
     facebook: {
