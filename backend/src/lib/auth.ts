@@ -16,6 +16,11 @@ export const auth = betterAuth({
       clientSecret: process.env.FACEBOOK_CLIENT_SECRET as string,
       redirectURI: "https://afforda-zeta.vercel.app/api/auth/callback/facebook",
     },
+    google: {
+      clientId: process.env.GOOGLE_CLIENT_ID as string,
+      clientSecret: process.env.GOOGLEC_CLIENT_SECRET as string,
+      redirectURI: "https://afforda-zeta.vercel.app/api/auth/callback/google",
+    },
   },
   emailAndPassword: {
     enabled: true,
