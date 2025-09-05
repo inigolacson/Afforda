@@ -14,7 +14,7 @@ export const auth = betterAuth({
     facebook: {
       clientId: process.env.FACEBOOK_CLIENT_ID as string,
       clientSecret: process.env.FACEBOOK_CLIENT_SECRET as string,
-      redirectURI: "https://transakto.vercel.app/api/auth/callback/facebook",
+      redirectURI: "https://afforda-zeta.vercel.app/api/auth/callback/facebook",
     },
   },
   emailAndPassword: {
